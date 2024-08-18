@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 public enum BallResult {
     NOTHING, BALL, STRIKE

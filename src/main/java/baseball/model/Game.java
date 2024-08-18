@@ -1,4 +1,4 @@
-package baseball;
+package baseball.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Game {
 
-    static final int MAX_BALL_CAPACITY = 3;
+    public static final int MAX_BALL_CAPACITY = 3;
     private List<Ball> comBalls = new ArrayList<>(MAX_BALL_CAPACITY);
 
     public Game() {
@@ -55,4 +55,5 @@ public class Game {
         }
         return computer;
     }
+
 }
