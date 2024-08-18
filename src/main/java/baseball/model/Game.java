@@ -21,6 +21,8 @@ public class Game {
     }
 
     public PlayResult play(String playerNumber) {
+        validatePlayerInput(playerNumber);
+
         return play(makeBalls(playerNumber));
     }
 
@@ -39,7 +41,7 @@ public class Game {
     private List<Ball> makeBalls(String number) {
         List<Ball> balls = new ArrayList<>();
         for (int i = 0; i < MAX_BALL_CAPACITY; i++) {
-            balls.add(new Ball(number.charAt(i), i));
+            balls.add(new Ball(number.charAt(i) - '0', i));
         }
         return balls;
     }
@@ -56,4 +58,14 @@ public class Game {
         return computer;
     }
 
+    private void validatePlayerInput(String input) {
+        if (input.length() != MAX_BALL_CAPACITY) {
+            throw new IllegalArgumentException("입력된 숫자는 " + MAX_BALL_CAPACITY + "개여야 합니다.");
+        }
+
+        long uniqueCount = input.chars().distinct().count();
+        if (uniqueCount != MAX_BALL_CAPACITY) {
+            throw new IllegalArgumentException("중복된 숫자가 포함되어 있습니다.");
+        }
+    }
 }
